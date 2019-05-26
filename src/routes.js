@@ -5,6 +5,7 @@ import actions from "./actions";
 
 import Wallets from "./screens/wallets";
 import WalletCreate from './screens/wallet-create';
+import WalletResume from './screens/wallet-resume'
 
 import { Navbar } from "./components";
 
@@ -20,6 +21,7 @@ function AppRoutes({ getBtcPrice, getBrtPrice }) {
         <Route>
           <Route path="/wallets" component={Wallets} />
           <Route path="/wallets/create" component={WalletCreate} />
+          <Route path="/wallets/:id/resume" component={WalletResume} />
         </Route>
         
       </Switch>
