@@ -29,9 +29,6 @@ const prices = async (): CurrencyType => {
   const resp = await api.get(url);
   const data: CotacaoRespType = resp.data;
 
-  console.log(last3day);
-  console.log(data);
-
   const price: CurrencyType = {
     buy: data.value.reverse()[0].cotacaoCompra,
     sell: data.value.reverse()[0].cotacaoVenda,

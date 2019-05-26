@@ -1,5 +1,5 @@
 import { expect, assert } from "chai";
-import { prices } from "../services/britaService";
+import { prices } from "../services/brtService";
 
 test("Consulta a cotacao da Brita corretamente", async () => {
   const resp = await prices();
