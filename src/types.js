@@ -38,4 +38,4 @@ type WalletType = {
   type: "brt" || "btc"
 };
 
-export { StoreType, PricesType, WalletType, WalletsType };
+export { StoreType, PricesType, CurrencyType, WalletType, WalletsType };
