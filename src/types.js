@@ -37,7 +37,8 @@ export type WalletsType = {
 };
 
 export type WalletType = {
+  id: Number,
   name: String,
   amount: Number,
-  type: "brt" | "btc"
+  type: "brt" | "btc",
 };
