@@ -28,7 +28,7 @@ function WalletsScreen(props) {
         </div>
 
         <div className="columns is-multiline">
-          {[{ name: "Teste", type: "btc",amount: 0.2434 }].map(wallet => (
+          {WALLETS.data.map(wallet => (
             <div className="column is-4">
               <Wallet {...wallet} />
             </div>
