@@ -1,4 +1,5 @@
 import createStore from "unistore";
+import devtools from "unistore/devtools";
 
 const LOCAL_DATABASE_KEY = "@STONE_WALLETS_APP";
 const currDatabase = localStorage.getItem(LOCAL_DATABASE_KEY);
@@ -16,7 +17,7 @@ const initialState = currDatabase
   : JSON.parse(currDatabase);
 
 let store =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV === "production" || process.env.NODE_ENV === "test"
     ? createStore(initialState)
     : devtools(createStore(initialState));
 
