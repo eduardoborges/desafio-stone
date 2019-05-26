@@ -3,20 +3,22 @@ import createStore from "unistore";
 const LOCAL_DATABASE_KEY = "@STONE_WALLETS_APP";
 const currDatabase = localStorage.getItem(LOCAL_DATABASE_KEY);
 
-const initialState =
-  currDatabase === null
-    ? {
-        cotations: {
-          usd: {}
-        },
-        wallets: {
-          data: [],
-          isLoading: false
-        }
+const initialState = currDatabase
+  ? {
+      cotations: {
+        usd: {}
+      },
+      wallets: {
+        data: [],
+        isLoading: false
       }
-    : currDatabase;
+    }
+  : JSON.parse(currDatabase);
 
-const store = createStore(initialState);
+let store =
+  process.env.NODE_ENV === "production"
+    ? createStore(initialState)
+    : devtools(createStore(initialState));
 
 store.subscribe(state => localStorage.setItem(LOCAL_DATABASE_KEY, JSON.stringify(state)));
 
