@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import { WalletType } from "../types";
 
 function Wallet(props: WalletType) {
@@ -32,12 +33,12 @@ function Wallet(props: WalletType) {
           </div>
         </div>
         <footer className="card-footer">
-          <a href="#" className="card-footer-item">
+          <Link to={`/wallets/${props.id}/sell`} className="card-footer-item">
             Vender
-          </a>
-          <a href="#" className="card-footer-item">
+          </Link>
+          <Link to={`/wallets/${props.id}/resume`} className="card-footer-item">
             Extrato
-          </a>
+          </Link>
         </footer>
       </div>
     </div>
