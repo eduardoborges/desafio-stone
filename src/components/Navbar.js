@@ -10,7 +10,7 @@ function Navbar() {
             <img
               src="https://www.stone.com.br/wp-content/themes/stone/assets/images/stoneco.png"
               width="120"
-              alt=""
+              alt="Stone app"
             />
           </div>
         </div>
