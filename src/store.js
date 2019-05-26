@@ -16,7 +16,8 @@ const blankState: StoreType = {
         sell: 0,
         date: Date
       },
-      isLoading: false
+      isLoading: false,
+      isFeched: false
     },
     btc: {
       data: {
@@ -24,18 +25,20 @@ const blankState: StoreType = {
         sell: 0,
         date: Date
       },
-      isLoading: false
+      isLoading: false,
+      isFeched: false
     }
   },
 
   //
   WALLETS: {
     data: [],
-    isLoading: false
+    isLoading: false,
+    isFeched: false
   }
 };
 
-const initialState = currDatabase ? blankState : JSON.parse(currDatabase);
+const initialState =  blankState;
 
 let store =
   process.env.NODE_ENV === "production" || process.env.NODE_ENV === "test"

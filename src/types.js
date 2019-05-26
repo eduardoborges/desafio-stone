@@ -15,11 +15,13 @@ export type StoreType = {
 export type PricesType = {
   brt: {
     data: CurrencyType,
-    isLoading: Boolean
+    isLoading: Boolean,
+    isFeched: Boolean
   },
   btc: {
     data: CurrencyType,
-    isLoading: Boolean
+    isLoading: Boolean,
+    isFeched: Boolean
   }
 };
 
