@@ -3,11 +3,11 @@ import { prices } from "../services/britaService";
 
 test("Consulta a cotacao da Brita corretamente", async () => {
   const resp = await prices();
-  expect(resp.value).to.have.length.greaterThan(0);
-  expect(resp.value[0].cotacaoCompra)
+  expect(resp.sell)
     .to.be.an("number")
     .and.greaterThan(0);
-  expect(resp.value[0].cotacaoVenda)
+
+  expect(resp.buy)
     .to.be.an("number")
     .and.greaterThan(0);
 });
