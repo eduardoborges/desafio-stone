@@ -1,5 +1,6 @@
 import api from "./index";
 import dayjs from "dayjs";
+import { CurrencyType } from "../types";
 
 type CotacaoItemType = {
   cotacaoCompra: number,
@@ -12,7 +13,7 @@ type CotacaoRespType = {
   value: Array<CotacaoItemType>
 };
 
-const cotation = async (): CotacaoRespType => {
+const cotation = async (): CurrencyType => {
   const yesterday = dayjs()
     .subtract(1, "day")
     .format("MM-DD-YYYY");
@@ -23,8 +24,16 @@ const cotation = async (): CotacaoRespType => {
 
   const fullUrl = base + path + params;
 
-  const { data } = await api.get(fullUrl);
-  return data;
+  const resp = await api.get(fullUrl);
+  const data: CotacaoRespType = resp.data;
+
+  const price: CurrencyType = {
+    buy: data.value[0].cotacaoCompra,
+    sell: data.value[0].cotacaoVenda,
+    date: data.value[0].dataHoraCotacao
+  };
+
+  return price;
 };
 
 export { cotation };
