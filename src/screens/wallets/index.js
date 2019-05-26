@@ -1,4 +1,5 @@
 import React from "react";
+import {Link } from  'react-router-dom';
 import { WalletsType } from "../../types";
 import { connect } from "unistore/react";
 import pricesActions from "../../actions/pricesActions";
@@ -15,7 +16,7 @@ function WalletsScreen(props) {
             <h1 className="title">Wallets</h1>
           </div>
           <div className="column has-text-right">
-            <div className="button is-primary is-medium is-rounded">Create new Wallet</div>
+            <Link to="/wallets/create" className="button is-primary is-medium is-rounded">Create new Wallet</Link>
           </div>
         </div>
         <div className="content">
