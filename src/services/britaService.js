@@ -14,23 +14,28 @@ type CotacaoRespType = {
 };
 
 const prices = async (): CurrencyType => {
-  const yesterday = dayjs()
-    .subtract(1, "day")
+  const today = dayjs().format("MM-DD-YYYY");
+  const last3day = dayjs()
+    .subtract(4, "day")
     .format("MM-DD-YYYY");
 
-  const base = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/";
-  const path = "odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?";
-  const params = `@dataCotacao='${yesterday}'&$top=100&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao`;
+  let url = "";
 
-  const fullUrl = base + path + params;
+  url += "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/";
+  url += "odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?";
+  url += `@dataInicial='${last3day}'&@dataFinalCotacao='${today}'&$top=100&$skip=0&`;
+  url += `$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao`;
 
-  const resp = await api.get(fullUrl);
+  const resp = await api.get(url);
   const data: CotacaoRespType = resp.data;
 
+  console.log(last3day);
+  console.log(data);
+
   const price: CurrencyType = {
-    buy: data.value[0].cotacaoCompra,
-    sell: data.value[0].cotacaoVenda,
-    date: data.value[0].dataHoraCotacao
+    buy: data.value.reverse()[0].cotacaoCompra,
+    sell: data.value.reverse()[0].cotacaoVenda,
+    date: data.value.reverse()[0].dataHoraCotacao
   };
 
   return price;
