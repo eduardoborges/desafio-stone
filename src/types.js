@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * ! Arquivo contem tipos utilizados neste pequeno projeto
  * ! Geralmente se utiliza uma pasta com as tipagens,
@@ -5,12 +7,12 @@
  * ! né bbs
  */
 
-type StoreType = {
+export type StoreType = {
   WALLETS: WalletsType,
   PRICES: PricesType
 };
 
-type PricesType = {
+export type PricesType = {
   brt: {
     data: CurrencyType,
     isLoading: Boolean
@@ -21,21 +23,19 @@ type PricesType = {
   }
 };
 
-type CurrencyType = {
+export type CurrencyType = {
   buy: number,
   sell: number,
   date: Date
 };
 
-type WalletsType = {
+export type WalletsType = {
   data: Array<WalletType>,
   isLoading: Boolean
 };
 
-type WalletType = {
+export type WalletType = {
   name: String,
   amount: Number,
-  type: "brt" || "btc"
+  type: "brt" | "btc"
 };
-
-export { StoreType, PricesType, CurrencyType, WalletType, WalletsType };
