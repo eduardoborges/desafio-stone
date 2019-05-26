@@ -13,7 +13,7 @@ type CotacaoRespType = {
   value: Array<CotacaoItemType>
 };
 
-const cotation = async (): CurrencyType => {
+const prices = async (): CurrencyType => {
   const yesterday = dayjs()
     .subtract(1, "day")
     .format("MM-DD-YYYY");
@@ -36,4 +36,4 @@ const cotation = async (): CurrencyType => {
   return price;
 };
 
-export { cotation };
+export { prices };
