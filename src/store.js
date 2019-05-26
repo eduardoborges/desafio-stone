@@ -1,14 +1,35 @@
+// @flow
+
 import createStore from "unistore";
 import devtools from "unistore/devtools";
+import { StoreType } from "./types";
 
 const LOCAL_DATABASE_KEY = "@STONE_WALLETS_APP";
 const currDatabase = localStorage.getItem(LOCAL_DATABASE_KEY);
 
-const blankState = {
-  cotations: {
-    usd: {}
+const blankState: StoreType = {
+  //
+  PRICES: {
+    brt: {
+      data: {
+        buy: 0,
+        sell: 0,
+        date: Date
+      },
+      isLoading: false
+    },
+    btc: {
+      data: {
+        buy: 0,
+        sell: 0,
+        date: Date
+      },
+      isLoading: false
+    }
   },
-  wallets: {
+
+  //
+  WALLETS: {
     data: [],
     isLoading: false
   }
