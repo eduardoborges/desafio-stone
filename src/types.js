@@ -9,7 +9,8 @@
 
 export type StoreType = {
   WALLETS: WalletsType,
-  PRICES: PricesType
+  PRICES: PricesType,
+  TRANSACTIONS: TransactionsType
 };
 
 export type PricesType = {
@@ -33,12 +34,26 @@ export type CurrencyType = {
 
 export type WalletsType = {
   data: Array<WalletType>,
-  isLoading: Boolean
+  isLoading: Boolean,
+  isFeched: Boolean
 };
 
 export type WalletType = {
   id: Number,
   name: String,
   amount: Number,
-  type: "brt" | "btc",
+  type: "brt" | "btc"
+};
+
+export type TransactionType = {
+  walletSource: Number,
+  walletDestination: Number,
+  amount: Number,
+  date: Date
+};
+
+export type TransactionsType = {
+  data: Array<TransactionType>,
+  isLoading: Boolean,
+  isFeched: Boolean
 };

@@ -35,6 +35,13 @@ const blankState: StoreType = {
     data: [],
     isLoading: false,
     isFeched: false
+  },
+
+  // 
+  TRANSACTIONS: {
+    data: [],
+    isLoading: false,
+    isFeched: false
   }
 };
 
