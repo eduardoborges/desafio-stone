@@ -1,14 +1,17 @@
-import React from "react";
+// @flow
+
+import React, { useEffect } from "react";
 import { hot } from "react-hot-loader";
 import { Provider } from "unistore/react";
 
 import store from "./store";
+import AppRoutes from "./routes";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <h1>Olá pessoas!</h1>
+        <AppRoutes />
       </div>
     </Provider>
   );
