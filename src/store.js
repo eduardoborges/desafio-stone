@@ -7,6 +7,7 @@ import { StoreType } from "./types";
 const LOCAL_DATABASE_KEY = "@STONE_WALLETS_APP";
 const currDatabase = localStorage.getItem(LOCAL_DATABASE_KEY);
 
+
 const blankState: StoreType = {
   //
   PRICES: {
@@ -45,7 +46,7 @@ const blankState: StoreType = {
   }
 };
 
-const initialState =  blankState;
+const initialState = currDatabase === null ? blankState : JSON.parse(currDatabase);
 
 let store =
   process.env.NODE_ENV === "production" || process.env.NODE_ENV === "test"
