@@ -7,6 +7,7 @@ import Wallets from "./screens/wallets";
 import WalletCreate from './screens/wallet-create';
 import WalletResume from './screens/wallet-resume'
 import WalletSell from './screens/wallet-sell';
+import Login from './screens/login'
 
 import { Navbar } from "./components";
 
@@ -17,9 +18,10 @@ function AppRoutes({ getBtcPrice, getBrtPrice }) {
   }, []);
   return (
     <Router>
-      <Navbar />
       <Switch>
+        <Route path="/" exact component={Login}></Route>
         <Route>
+          <Navbar />
           <Route path="/wallets" component={Wallets} />
           <Route path="/wallets/create" component={WalletCreate} />
           <Route path="/wallets/:id/resume" component={WalletResume} />
