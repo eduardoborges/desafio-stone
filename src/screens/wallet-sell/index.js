@@ -70,11 +70,11 @@ function WalletSellScreen(props) {
             <button className="delete" aria-label="close" onClick={close} />
           </header>
           <section className="modal-card-body">
-            <pre>
+            {/* <pre>
               {JSON.stringify(currSrc)} -> {JSON.stringify(currDest)}
             </pre>
             <pre>{JSON.stringify(form)}</pre>
-            <hr />
+            <hr /> */}
 
             <div className="columns is-multiline">
               {/* field */}

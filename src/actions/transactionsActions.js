@@ -11,8 +11,6 @@ const actions = ({ getState, setState }) => ({
     let transaction = { ...payload };
     let wallets = [...state.WALLETS.data];
 
-    console.log(transaction.finalAmount)
-
     wallets = wallets.map(w => {
       let wallet = { ...w };
       if (wallet.id === transaction.walletSource) {
