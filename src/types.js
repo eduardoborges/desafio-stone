@@ -50,6 +50,7 @@ export type TransactionType = {
   walletSource: Number,
   walletDestination: Number,
   amount: Number,
+  finalAmount: Number,
   date: Date
 };
 
