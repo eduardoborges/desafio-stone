@@ -1,22 +1,26 @@
+// eslint-disable
+
 import React, { useState, useEffect } from "react";
 import { connect } from "unistore/react";
-import { TransactionType, TransactionsType, WalletsType, PricesType } from "../../types";
+import { TransactionType, WalletsType, PricesType } from "../../types";
 import transactionsActions from "../../actions/transactionsActions";
 
 function WalletSellScreen(props) {
   const WALLETS: WalletsType = props.WALLETS;
   const PRICES: PricesType = props.PRICES;
-  const TRANSACTIONS: TransactionsType = props.TRANSACTIONS;
+  // const TRANSACTIONS: TransactionsType = props.TRANSACTIONS;
 
   const blankForm: TransactionType = {};
   const [form, setForm] = useState(blankForm);
   const [currDest, setCurrDest] = useState('brt');
   const [currSrc, setCurrSrc] = useState('btc');
 
+  // eslint-disable-next-line
   useEffect(() => {
     setForm({ ...form, amount:0, walletSource: props.match.params.id });
   }, []);
 
+  // eslint-disable-next-line
   useEffect(() => {
     const walletDst = WALLETS.data.find(item => item.id === form.walletDestination);
     const walletSrc = WALLETS.data.find(item => item.id === form.walletSource);
@@ -36,14 +40,14 @@ function WalletSellScreen(props) {
   const close = () => props.history.push("/wallets");
 
   return (
-    <div class="modal is-active">
-      <div class="modal-background" onClick={close} />
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Ação de Venda</p>
-          <button class="delete" aria-label="close" onClick={close} />
+    <div className="modal is-active">
+      <div className="modal-background" onClick={close} />
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Ação de Venda</p>
+          <button className="delete" aria-label="close" onClick={close} />
         </header>
-        <section class="modal-card-body">
+        <section className="modal-card-body">
 
           <div className="columns is-multiline">
             
@@ -51,10 +55,10 @@ function WalletSellScreen(props) {
             <div className="column is-6">
               <label>
                 <b>Carteira Origem</b>
-                <div class="select is-fullwidth">
-                  <select disabled value={form.walletSource}>
+                <div className="select is-fullwidth">
+                  <select disabled defaultValue={form.walletSource}>
                     {WALLETS.data.map(wallet => (
-                      <option value={wallet.id}>{wallet.name}</option>
+                      <option value={wallet.id} key={wallet.id}>{wallet.name}</option>
                     ))}
                   </select>
                 </div>
@@ -65,16 +69,16 @@ function WalletSellScreen(props) {
             <div className="column is-half">
               <label>
                 <b>Carteira Destino (não {currSrc}) </b>
-                <div class="select is-fullwidth">
+                <div className="select is-fullwidth">
                   <select
-                    value={form.walletDestination}
+                    defaultValue={form.walletDestination}
                     onChange={e => setForm({ ...form, walletDestination: e.target.value })}
                   >
                     <option disabled selected>
                       Selecione...
                     </option>
                     {WALLETS.data.filter( w=> w.type !== currSrc ).map(wallet => (
-                      <option value={wallet.id}>{wallet.name}</option>
+                      <option value={wallet.id} key={wallet.id}>{wallet.name}</option>
                     ))}
                   </select>
                 </div>
@@ -85,17 +89,17 @@ function WalletSellScreen(props) {
             <div className="column is-6">
               <label>
                 <b>Quantidade</b>
-                <div class="field has-addons">
-                  <p class="control">
+                <div className="field has-addons">
+                  <p className="control">
                     <input
-                      class="input is-medium"
+                      className="input is-medium"
                       type="text"
                       value={form.amount}
                       onChange={e => setForm({ ...form, amount: e.target.value })}
                     />
                   </p>
-                  <p class="control">
-                    <a class="button is-medium is-static">BTC</a>
+                  <p className="control">
+                    <a className="button is-medium is-static">BTC</a>
                   </p>
                 </div>
               </label>
@@ -105,28 +109,28 @@ function WalletSellScreen(props) {
             <div className="column is-6">
               <label>
                 <b>Valor Final</b>
-                <div class="field has-addons">
-                  <p class="control">
+                <div className="field has-addons">
+                  <p className="control">
                     <input
-                      class="input is-medium"
+                      className="input is-medium"
                       disabled
                       type="text"
                       value={calcFinalAmout()}
                     />
                   </p>
-                  <p class="control">
-                    <span class="button is-medium is-static">{String(currDest).toLocaleUpperCase()}</span>
+                  <p className="control">
+                    <span className="button is-medium is-static">{String(currDest).toLocaleUpperCase()}</span>
                   </p>
                 </div>
               </label>
             </div>
           </div>
         </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success" onClick={handleTransact}>
+        <footer className="modal-card-foot">
+          <button className="button is-success" onClick={handleTransact}>
             Realizar transação
           </button>
-          <button class="button" onClick={close}>
+          <button className="button" onClick={close}>
             Cancelar
           </button>
         </footer>

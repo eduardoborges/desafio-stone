@@ -1,5 +1,5 @@
 import React from "react";
-import {Link } from  'react-router-dom';
+import { Link } from "react-router-dom";
 import { WalletsType } from "../../types";
 import { connect } from "unistore/react";
 import pricesActions from "../../actions/pricesActions";
@@ -16,20 +16,21 @@ function WalletsScreen(props) {
             <h1 className="title">Wallets</h1>
           </div>
           <div className="column has-text-right">
-            <Link to="/wallets/create" className="button is-primary is-medium is-rounded">Create new Wallet</Link>
+            <Link to="/wallets/create" className="button is-primary is-medium is-rounded">
+              Create new Wallet
+            </Link>
           </div>
         </div>
         <div className="content">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptas illum minima
-            officiis, mollitia excepturi voluptates ratione soluta laudantium ipsum ad placeat
-            distinctio, architecto nam porro? Vero exercitationem laboriosam nobis!
+            Aqui voce poderá criar carteiras, fazer vendas para outra carteira de outra moeda.{" "}
+            <br /> Pode consultar transações relacionadas a uma determinada carteira.
           </p>
         </div>
 
         <div className="columns is-multiline">
           {WALLETS.data.map(wallet => (
-            <div className="column is-4">
+            <div className="column is-4" key={wallet.id}>
               <Wallet {...wallet} />
             </div>
           ))}

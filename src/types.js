@@ -7,6 +7,7 @@
  * ! né bbs
  */
 
+
 export type StoreType = {
   WALLETS: WalletsType,
   PRICES: PricesType,
@@ -57,3 +58,5 @@ export type TransactionsType = {
   isLoading: Boolean,
   isFeched: Boolean
 };
+
+

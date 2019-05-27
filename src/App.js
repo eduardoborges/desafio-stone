@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useEffect } from "react";
+import React from "react";
 import { hot } from "react-hot-loader";
 import { Provider } from "unistore/react";
 

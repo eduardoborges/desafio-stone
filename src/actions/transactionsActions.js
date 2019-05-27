@@ -1,6 +1,6 @@
 // @flow
 
-import { PricesType, StoreType, CurrencyType, WalletType, TransactionType } from "../types";
+import { StoreType, TransactionType } from "../types";
 import { uniq } from "../utils";
 const actions = ({ getState, setState }) => ({
   /**

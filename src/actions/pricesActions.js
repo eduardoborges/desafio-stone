@@ -1,6 +1,6 @@
 // @flow
 
-import { PricesType, StoreType, CurrencyType } from "../types";
+import { StoreType, CurrencyType } from "../types";
 import { prices as brtPrices } from "../services/brtService";
 import { prices as btcPrices } from "../services/btcService";
 
