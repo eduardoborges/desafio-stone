@@ -12,10 +12,10 @@ import Login from './screens/login'
 import { Navbar } from "./components";
 
 function AppRoutes({ getBtcPrice, getBrtPrice }) {
-  useEffect(() => {
-    getBtcPrice();
-    getBrtPrice();
-  });
+  useEffect(async() => {
+    await getBtcPrice();
+    await getBrtPrice();
+  },[]);
   return (
     <Router>
       <Switch>
