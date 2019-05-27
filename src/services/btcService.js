@@ -1,6 +1,7 @@
 import api from "./index";
 import dayjs from "dayjs";
 
+
 import { CurrencyType } from "../types";
 
 type CotacaoRespType = {
@@ -22,8 +23,8 @@ const prices = async (): CurrencyType => {
   const data: CotacaoRespType = resp.data;
 
   const price: CurrencyType = {
-    buy: data.ticker.buy,
-    sell: data.ticker.sell,
+    buy: Number(data.ticker.buy),
+    sell: Number(data.ticker.sell),
     date: dayjs(data.ticker.date)
   };
 

@@ -1,5 +1,6 @@
 import { expect, assert } from "chai";
 import { prices } from "../services/brtService";
+jest.setTimeout(30000);
 
 test("Consulta a cotacao da Brita corretamente", async () => {
   const resp = await prices();
