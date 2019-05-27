@@ -44,6 +44,8 @@ function WalletSellScreen(props) {
         </header>
         <section class="modal-card-body">
 
+          
+
           <hr/>
           <pre>{JSON.stringify(form)}</pre>
             <pre>{JSON.stringify(currDest)} | {JSON.stringify(currSrc)}  </pre>
