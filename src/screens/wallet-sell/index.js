@@ -24,12 +24,10 @@ function WalletSellScreen(props) {
     if(walletSrc) setCurrSrc(walletSrc.type);
   }, [form]);
 
-  const handleTransact = () => {
-    props.runSellTransaction(form);
-  };
-
+  const handleTransact = () => props.runSellTransaction(form);
+  
   const calcFinalAmout = ()=> {
-    return form.amount * PRICES[currSrc].data.sell;
+    return Number(form.amount * PRICES[currSrc].data.sell).toFixed(2);
   }
 
   const close = () => props.history.push("/wallets");
@@ -43,13 +41,6 @@ function WalletSellScreen(props) {
           <button class="delete" aria-label="close" onClick={close} />
         </header>
         <section class="modal-card-body">
-
-          
-
-          <hr/>
-          <pre>{JSON.stringify(form)}</pre>
-            <pre>{JSON.stringify(currDest)} | {JSON.stringify(currSrc)}  </pre>
-          <hr/>
 
           <div className="columns is-multiline">
             
@@ -70,7 +61,7 @@ function WalletSellScreen(props) {
             {/* field */}
             <div className="column is-half">
               <label>
-                <b>Carteira Destino</b>
+                <b>Carteira Destino (não {currSrc}) </b>
                 <div class="select is-fullwidth">
                   <select
                     value={form.walletDestination}
@@ -79,7 +70,7 @@ function WalletSellScreen(props) {
                     <option disabled selected>
                       Selecione...
                     </option>
-                    {WALLETS.data.map(wallet => (
+                    {WALLETS.data.filter( w=> w.type !== currSrc ).map(wallet => (
                       <option value={wallet.id}>{wallet.name}</option>
                     ))}
                   </select>
