@@ -2,7 +2,7 @@
 
 import { PricesType, StoreType, CurrencyType } from "../types";
 import { prices as brtPrices } from "../services/brtService";
-import { prices as btcPrices } from "../services/brtService";
+import { prices as btcPrices } from "../services/btcService";
 
 const actions = ({ getState, setState }) => ({
   /**
