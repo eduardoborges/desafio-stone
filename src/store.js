@@ -49,7 +49,7 @@ const blankState: StoreType = {
 const initialState = currDatabase === null ? blankState : JSON.parse(currDatabase);
 
 let store =
-  process.env.NODE_ENV === "production" || process.env.NODE_ENV === "test"
+  (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "test")
     ? createStore(initialState)
     : devtools(createStore(initialState));
 
