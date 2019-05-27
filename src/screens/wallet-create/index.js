@@ -10,9 +10,10 @@ function WalletCreateScreen(props) {
   };
   const [form, setForm] = useState(blankForm);
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
-    props.createWallet(form)
+    await props.createWallet(form);
+    props.history.push('/wallets');
   };
 
   const close = () => props.history.push("/wallets");

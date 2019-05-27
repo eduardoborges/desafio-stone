@@ -24,7 +24,10 @@ function WalletSellScreen(props) {
     if(walletSrc) setCurrSrc(walletSrc.type);
   }, [form]);
 
-  const handleTransact = () => props.runSellTransaction(form);
+  const handleTransact = async () => {
+    await props.runSellTransaction(form);
+    props.history.push('/wallets');
+  }
   
   const calcFinalAmout = ()=> {
     return Number(form.amount * PRICES[currSrc].data.sell).toFixed(2);
