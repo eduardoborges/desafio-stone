@@ -16,7 +16,7 @@ type CotacaoRespType = {
 };
 
 const prices = async (): CurrencyType => {
-  const url = `https://www.mercadobitcoin.net/api/BTC/ticker/`;
+  const url = "https://cors.io/?https://www.mercadobitcoin.net/api/BTC/ticker/";
 
   const resp = await api.get(url);
   const data: CotacaoRespType = resp.data;
