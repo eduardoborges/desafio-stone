@@ -1,7 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { PricesType } from '../types'
+import { connect } from 'unistore/react';
+ 
+function Navbar(props) {
 
-function Navbar() {
+  const PRICES : PricesType = props.PRICES;
   return (
     <nav className="navbar is-primary">
       <div className="container">
@@ -16,6 +20,12 @@ function Navbar() {
         </div>
         <div className="navbar-menu">
           <div className="navbar-end">
+            <div className="navbar-item">
+              <small><b>BTC</b> buy {PRICES.btc.data.buy} sell {PRICES.btc.data.buy}</small> 
+            </div>
+            <div className="navbar-item">
+              <small><b>BRT</b> buy {PRICES.brt.data.buy} sell {PRICES.brt.data.buy}</small>  
+            </div>
             <NavLink className="navbar-item" to="/wallets" activeClassName="is-active">
               Wallets
             </NavLink>
@@ -26,4 +36,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default connect('PRICES')(Navbar);
