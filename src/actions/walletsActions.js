@@ -8,13 +8,15 @@ const actions = ({ getState, setState }) => ({
    *
    */
   async createWallet(state: StoreType, wallet: WalletType): StoreType {
-    const walletToAdd = { ...wallet };
+    let walletToAdd = { ...wallet };
 
     walletToAdd.id = `${Date.now()}${Math.random(1, 1000).toFixed(0)}`;
 
-    if( walletToAdd === 'btc' ){
-      walletToAdd.amount = Math.random(0, 1).toFixed(8);
-    } else if(walletToAdd.type === 'brt'){
+    if( walletToAdd.type === 'btc' ){
+      walletToAdd.amount = (Math.random(0, 1)).toFixed(8);
+    }
+    
+    if(walletToAdd.type === 'brt'){
       walletToAdd.amount = (Math.random(1, 400)*100).toFixed(2);
     }
 
