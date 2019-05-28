@@ -1,5 +1,5 @@
 ![Build status](https://api.travis-ci.org/eduardoborges/desafio-stone.svg?branch=master)
-# Desafio Invillia
+# Desafio Stone
 
 Pois bem, esse é o resultado de um teste para o cargo de desenvolvedor pleno/senior na Stone.
 
