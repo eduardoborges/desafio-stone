@@ -1,27 +1,17 @@
-![Build status](https://api.travis-ci.org/eduardoborges/desafio-stone.svg?branch=master)
-# Desafio Stone
+# Intro
 
-Pois bem, esse é o resultado de um teste para o cargo de desenvolvedor pleno/senior na Stone.
+## Techs
 
-O desafio é [este](https://gist.github.com/renatazenaro/4f68af50c12a0c324404dec849242eed) ;)
-
-## Resolução
- - React
- - [Unistore](https://github.com/developit/unistore) (State Container)
- - [Bulma](https://github.com/jgthms/bulma)
+- React
+- [Unistore](https://github.com/developit/unistore) (State Container)
+- [Bulma](https://github.com/jgthms/bulma)
 
 ## Coisinhas legais
- - 🔥 Hot Loader 
- - 🐪 Offline working 
- - 🔬 Testes de Serviços
 
-## Todo
- - ✅ Criar carteira 
- - ✅ Visualizar saldo
- - ✅ Efetuar Transação
- - ✅ Consultar extrato
- - ✅ Salvar dados localmente
-
+- 🔥 Hot Loader
+- Redux (mas nao é redux )
+- 🐪 Offline working
+- 🔬 Testes de Serviços
 
 ## Scripts
 
