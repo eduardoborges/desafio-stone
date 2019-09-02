@@ -30,6 +30,7 @@ module.exports = {
       },
     ],
     'react/prop-types': 0,
+    'react-hooks/exhaustive-deps': 'off',
     'import/prefer-default-export': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off'
