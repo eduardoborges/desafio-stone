@@ -13,7 +13,6 @@ const actions = (store:Store<AppState>) => ({
   },
 
   handleCheckLogin: async (state:AppState) => {
-    if (state.AUTH.isLoading) return;
     store.setState({ AUTH: { ...state.AUTH, isLoading: true } });
     setTimeout(() => {
       store.setState({ AUTH: { ...state.AUTH, isAuth: true, isLoading: false } });
