@@ -1,14 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import * as React from 'react';
+import { Router } from '@reach/router';
 
-import Home from './screens/home';
+import Welcome from './screens/welcome';
 
-export default function AppRoutes() {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-      </Switch>
-    </Router>
-  );
-}
+export default () => (
+  <Router>
+    <Welcome path="/" />
+  </Router>
+);
