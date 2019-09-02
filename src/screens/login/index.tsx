@@ -1,14 +1,11 @@
 import React from 'react';
 import { RouteComponentProps, Link } from '@reach/router';
 import { connect } from 'unistore/react';
-import { TodoState, TodoActions } from 'store/todo/types';
-import todoActions from 'store/todo/actions';
+import { AuthState, AuthActions } from 'store/auth/types';
+import actions from 'store/auth/actions';
 
-interface StateProps {
-  TODOS: TodoState
-}
 
-type Props = StateProps & TodoActions & RouteComponentProps;
+type Props = AuthActions & AuthState & RouteComponentProps;
 
 const Login : React.FC<Props> = props => (
   <div className="hero is-fullheight is-primary">
@@ -23,4 +20,4 @@ const Login : React.FC<Props> = props => (
 );
 
 
-export default connect('TODOS', todoActions)(Login);
+export default connect('TODOS', actions)(Login);

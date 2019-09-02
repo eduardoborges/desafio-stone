@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { connect } from 'unistore/react';
-import { TodoState, TodoActions } from 'store/todo/types';
-import todoActions from 'store/todo/actions';
 
-interface StateProps {
-  TODOS: TodoState
-}
-
-type Props = StateProps & TodoActions & RouteComponentProps;
+type Props = RouteComponentProps;
 
 const Wallets : React.FC<Props> = (props) => {
   const [value, setValue] = useState<string | undefined>('');
@@ -22,4 +16,4 @@ const Wallets : React.FC<Props> = (props) => {
 };
 
 
-export default connect('TODOS', todoActions)(Wallets);
+export default connect('TODOS')(Wallets);
