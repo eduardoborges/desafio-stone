@@ -7,10 +7,12 @@ import devtools from 'unistore/devtools';
 
 import { AuthState } from './auth/types';
 import { WalletState } from './wallets/types';
+import { PricesState } from './prices/types';
 
 export interface AppState {
   AUTH: AuthState,
   WALLETS: WalletState,
+  PRICES: PricesState,
 }
 
 const adapter = localStorageAdapter();
@@ -26,6 +28,12 @@ const initialState: AppState = {
   WALLETS: {
     data: [],
     isLoading: false,
+  },
+  PRICES: {
+    BTC_BRT: {
+      buy: 10338.10,
+      sell: 9000,
+    },
   },
 };
 
