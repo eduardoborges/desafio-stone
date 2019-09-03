@@ -9,9 +9,10 @@ import actions from 'store/wallets/actions';
 type Props = RouteComponentProps & WalletState & WalletActions;
 
 const Wallets: React.FC<Props> = (props) => {
-  const { data, removeWallet } = props;
+  const { children, data, removeWallet } = props;
   return (
     <>
+      {children}
       <div className="columns is-mobile">
         <div className="column">
           <h1 className="title">Carteiras</h1>
@@ -26,7 +27,7 @@ const Wallets: React.FC<Props> = (props) => {
 
         {data.map(wallet => (
           <div className="column is-4">
-            <Wallet {...wallet} handleRemove={() => removeWallet(wallet)} handleExchange={() => navigate(`/exchange/trade/${wallet.id}`)} />
+            <Wallet {...wallet} handleRemove={() => removeWallet(wallet)} handleExchange={() => navigate(`/exchange/wallet/${wallet.id}/transaction`)} />
           </div>
         ))}
 
