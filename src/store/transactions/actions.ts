@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-lonely-if */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -13,7 +14,7 @@ const actions = (store:Store<AppState>) => ({
 
   handleTransaction: (
     state: AppState, source: number, dest: number, amount: number,
-  ) : Transaction | undefined => {
+  ) => {
     const wallets = [...state.WALLETS.data];
     const prices = { ...state.PRICES.BTC_BRT };
 
@@ -27,6 +28,7 @@ const actions = (store:Store<AppState>) => ({
       if (walletSource.amount !== undefined && walletSource.amount >= amount) {
         // calcula o valor a ser somado na carteira origem fazendo a conversao
         const destAmount = walletSource.type === 'BTC' ? amount * prices.sell : amount * (1 / prices.buy);
+
         // faz a transacao, tirando e adicionando valores
         const walletsTransaction = wallets.map(w => (
           w.id === source ? { ...w, amount: w.amount - amount } : w
@@ -34,9 +36,14 @@ const actions = (store:Store<AppState>) => ({
           w.id === dest ? { ...w, amount: w.amount + destAmount } : w
         ));
 
+        const transaction : Transaction = {
+          id: Date.now(),
+          walletDestination: dest,
+          walletSource: source,
+          time: dayjs(),
+        };
 
-        // retorna pra store a transacao
-        toast('Trancação efetuada!', { type: toast.TYPE.SUCCESS });
+        // salva na store
         store.setState({
           WALLETS: {
             ...state.WALLETS,
@@ -44,17 +51,13 @@ const actions = (store:Store<AppState>) => ({
           },
         });
 
-        const transaction : Transaction = {
-          id: Date.now(),
-          walletDestination: dest,
-          walletSource: source,
-          time: dayjs(),
-        };
+        // retorna pra store a transacao
+        toast('Trancação efetuada!', { type: toast.TYPE.SUCCESS });
         return transaction;
       }
+    } else {
+      toast('Carteira de origem ou destino nao existe', { type: toast.TYPE.ERROR });
     }
-
-    return undefined;
   },
   //
 
