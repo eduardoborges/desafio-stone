@@ -6,8 +6,12 @@ export interface TransactionState {
 
 export interface Transaction{
   id?: number,
+  description?:string,
   wallet_source: number,
   wallet_destination: number,
   time: Dayjs,
-  description?:string
+}
+
+export interface TransactionActions {
+  handleTransaction(sourceId: number, destId: number, amount: number): Transaction
 }
