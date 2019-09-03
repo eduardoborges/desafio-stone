@@ -7,6 +7,7 @@ export interface WalletState {
 export interface Wallet {
   id?: number,
   name: string,
+  amount?: number,
   type: 'BTC' | 'BRT'
 }
 

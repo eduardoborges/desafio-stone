@@ -12,7 +12,7 @@ const actions = (store:Store<AppState>) => ({
     toast('Carteira criada.', { type: toast.TYPE.SUCCESS });
     return ({
       WALLETS: {
-        data: [...WALLETS.data, { id: Date.now(), ...payload }],
+        data: [...WALLETS.data, { id: Date.now(), amount: 10000, ...payload }],
         isLoading: false,
       },
     });
