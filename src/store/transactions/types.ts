@@ -1,7 +1,8 @@
 import { Dayjs } from 'dayjs';
 
 export interface TransactionState {
-  data: []
+  data: [],
+  isLoading: boolean
 }
 
 export interface Transaction{

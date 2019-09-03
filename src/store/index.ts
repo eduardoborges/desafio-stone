@@ -8,10 +8,12 @@ import devtools from 'unistore/devtools';
 import { AuthState } from './auth/types';
 import { WalletState } from './wallets/types';
 import { PricesState } from './prices/types';
+import { TransactionState } from './transactions/types';
 
 export interface AppState {
   AUTH: AuthState,
   WALLETS: WalletState,
+  TRANSACTIONS: TransactionState,
   PRICES: PricesState,
 }
 
@@ -26,6 +28,10 @@ const initialState: AppState = {
     isLoading: true,
   },
   WALLETS: {
+    data: [],
+    isLoading: false,
+  },
+  TRANSACTIONS: {
     data: [],
     isLoading: false,
   },
