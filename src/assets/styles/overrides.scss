@@ -4,3 +4,14 @@ select + span {
   @extend .help;
   @extend .is-danger;
 }
+
+// ajustes no toastr
+.Toastify__progress-bar{
+  background: $primary;
+}
+
+.Toastify__toast-container{
+  .Toastify__toast{
+    padding: 15px 20px;
+  }
+}
