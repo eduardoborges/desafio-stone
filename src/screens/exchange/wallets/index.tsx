@@ -27,7 +27,7 @@ const Wallets: React.FC<Props> = (props) => {
 
         {data.map(wallet => (
           <div className="column is-4">
-            <Wallet {...wallet} handleRemove={() => removeWallet(wallet)} handleExchange={() => navigate(`/exchange/wallet/${wallet.id}/transaction`)} />
+            <Wallet {...wallet} handleRemove={() => removeWallet(wallet)} handleExchange={() => navigate(`/exchange/wallets/${wallet.id}/transaction`)} />
           </div>
         ))}
 
