@@ -37,10 +37,12 @@ const actions = (store:Store<AppState>) => ({
         ));
 
         const transaction : Transaction = {
+          amount,
           id: Date.now(),
           walletDestination: dest,
           walletSource: source,
           time: dayjs(),
+          finalAmout: destAmount,
         };
 
         // salva na store
@@ -48,6 +50,10 @@ const actions = (store:Store<AppState>) => ({
           WALLETS: {
             ...state.WALLETS,
             data: walletsTransaction,
+          },
+          TRANSACTIONS: {
+            ...state.TRANSACTIONS,
+            data: [...state.TRANSACTIONS.data, transaction],
           },
         });
 
