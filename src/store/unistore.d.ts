@@ -20,3 +20,5 @@ declare module 'unistore/react' {
     new(props: P, context?: any): React.Component<P, S>;
   }
 }
+
+
