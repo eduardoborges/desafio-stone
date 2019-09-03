@@ -1,37 +1,42 @@
-# Intro
 
-## Techs
+<p style="text-align: center !important">
 
-- React
-- [Unistore](https://github.com/developit/unistore) (State Container)
-- [Bulma](https://github.com/jgthms/bulma)
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Stone_pagamentos.png" width="200" />
 
-## Coisinhas legais
+# Desafio Stone 🚀
+[![Twitter: euduardoborges](https://img.shields.io/twitter/follow/euduardoborges.svg?style=social)](https://twitter.com/euduardoborges)
 
-- 🔥 Hot Loader
-- Redux (mas nao é redux )
-- 🐪 Offline working
-- 🔬 Testes de Serviços
+</p>
+
+React Dudu Starter is a TypeScript React Starter Kit based on the Atomic Design methdology. Build using some cool things:
+
+
+- 🍴 TypeScript for better code
+- 👜 Unistore for state manangment
+- 🎛 React Scripts but no eject ;D
+- 🔥 React HotLoader buildin
+- ⚛ ESLint Aibnb Code Style
+- 🛣 Reach Router for cleaner routes
+- 🏗 Bulma for UI 
+
+
+<hr>
+
+Contributions, issues and feature requests are welcome! Feel free to check [issues page](https://github.com/eduardoborges/react-dudu-starter/issues).
+<hr>
 
 ## Scripts
 
-### `npm start`
+```sh
+npm install     # to install deps
+npm run start   # to run in dev mode
+npm run build   # to build for prod
+npm run test    # to run tests
+```
 
-Executa o código no modo desenvolvedor<br>
-Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador. (caso nao abra sozinho rs)
+## Author
 
-A página será recarregada se você fizer edições. <br>
-Possui Hot Loader implementado também <br>
-Você também verá quaisquer erros de lint no console.
+👤 **Eduardo Borges**
 
-### `npm test`
-
-Inicia o test runner no modo de relógio interativo. <br>
-
-### `npm run build`
-
-Cria o aplicativo para produção na pasta `build`. <br>
-Ele agrupa corretamente o React no modo de produção e otimiza o build para obter o melhor desempenho.
-
-A compilação é reduzida e os nomes dos arquivos incluem os hashes. <br>
-Seu aplicativo está pronto para ser implantado!
+* Twitter: [@euduardoborges](https://twitter.com/euduardoborges)
+* Github: [@eduardoborges](https://github.com/eduardoborges)

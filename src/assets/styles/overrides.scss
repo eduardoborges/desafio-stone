@@ -1,0 +1,6 @@
+
+input + span,
+select + span {
+  @extend .help;
+  @extend .is-danger;
+}
