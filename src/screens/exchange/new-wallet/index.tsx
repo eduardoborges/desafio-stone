@@ -32,17 +32,18 @@ const Wallets: React.FC<Props> = (props) => {
         <Form onSubmit={handleSubmit} schema={schema} noValidate>
           <header className="modal-card-head">
             <p className="modal-card-title">Nova Carteira</p>
-            <button type="button" className="delete" aria-label="close" />
+            <button type="button" className="delete" aria-label="close" onClick={() => navigate('/exchange/wallets')} />
           </header>
           <section className="modal-card-body">
             <div className="columns is-multiline">
               <div className="column is-6">
-                <Input name="name" type="text" className="input" />
+                <Input name="name" type="text" className="input is-rounded" placeholder="Defina um nome" />
               </div>
               <div className="column is-6">
-                <div className="select is-fullwidth">
+                <div className="select is-fullwidth  is-rounded">
                   <Select
                     name="type"
+                    placeholder="Escolha uma moeda"
                     options={[
                       {
                         id: 'BRT',
@@ -59,8 +60,8 @@ const Wallets: React.FC<Props> = (props) => {
             </div>
           </section>
           <footer className="modal-card-foot">
-            <button type="submit" className="button is-success">Criar nova carteira</button>
-            <button type="submit" className="button">Cancelar</button>
+            <button type="submit" className="button is-success is-rounded">Criar nova carteira</button>
+            <button type="submit" className="button  is-rounded" onClick={() => navigate('/exchange/wallets')}>Cancelar</button>
           </footer>
         </Form>
       </div>
