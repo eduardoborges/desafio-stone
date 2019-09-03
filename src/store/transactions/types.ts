@@ -7,8 +7,8 @@ export interface TransactionState {
 export interface Transaction{
   id?: number,
   description?:string,
-  wallet_source: number,
-  wallet_destination: number,
+  walletSource: number,
+  walletDestination: number,
   time: Dayjs,
 }
 
