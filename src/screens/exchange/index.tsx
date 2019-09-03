@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { connect } from 'unistore/react';
