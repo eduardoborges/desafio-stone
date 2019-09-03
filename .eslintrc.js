@@ -30,6 +30,7 @@ module.exports = {
       },
     ],
     'react/prop-types': 0,
+    'react-hooks/exhaustive-deps': 0,
     'react-hooks/exhaustive-deps': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'import/prefer-default-export': 'off',
