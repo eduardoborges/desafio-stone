@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-plusplus */
+/* eslint-disable */
 
 // @ts-ignore
 const combineActions = (...actions: any[]) => (store) => {
@@ -15,4 +12,14 @@ const combineActions = (...actions: any[]) => (store) => {
   return all;
 };
 
-export { combineActions };
+function bindActions(store: any, actions: any) {
+  if (typeof actions === 'function') actions = actions(store);
+  const bound = {};
+  // @ts-ignore
+  for (const i in actions) bound[i] = store.action(actions[i]);
+  return bound;
+}
+
+const sleep = (ms:number) => new Promise(resolve => setTimeout(resolve, ms));
+
+export { combineActions, bindActions, sleep };
