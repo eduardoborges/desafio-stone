@@ -66,10 +66,8 @@ const actions = (store:Store<AppState>) => ({
     if (amount <= 0) {
       toast('Valor negativo', { type: toast.TYPE.ERROR });
     }
-    if (walletSource) {
-      if (Number(walletSource.amount) < Number(amount)) {
-        toast('A carteira não tem saldo :/', { type: toast.TYPE.ERROR });
-      }
+    if (walletSource && Number(walletSource.amount) < Number(amount)) {
+      toast('A carteira não tem saldo :/', { type: toast.TYPE.ERROR });
     }
   },
   //
