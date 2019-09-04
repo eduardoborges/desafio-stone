@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import { Wallet as WalletProps } from 'store/wallets/types';
+import { navigate } from '@reach/router';
 
 interface OwnProps {
   handleRemove?(): void,
@@ -11,7 +12,7 @@ type Props = OwnProps & WalletProps;
 
 const Wallet : React.FC<Props> = (props) => {
   const {
-    amount, type, name, handleExchange, handleRemove,
+    id, amount, type, name, handleExchange, handleRemove,
   } = props;
 
   const iconColors = {
@@ -38,6 +39,7 @@ const Wallet : React.FC<Props> = (props) => {
         <div className="column is-full has-text-right">
           <div className="buttons is-right">
             <button type="button" onClick={handleExchange} className="button is-small is-rounded is-primary">Exchange</button>
+            <button type="button" onClick={() => navigate(`/exchange/wallets/${id}/resume`)} className="button is-small is-rounded is-dark">Extrato</button>
             <button type="button" onClick={handleRemove} className="button is-small is-rounded">Excluir</button>
           </div>
         </div>

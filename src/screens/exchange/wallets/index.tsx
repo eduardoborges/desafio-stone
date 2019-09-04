@@ -23,7 +23,7 @@ const Wallets: React.FC<Props> = (props) => {
 
       </div>
       <hr />
-      <div className="columns">
+      <div className="columns is-multiline">
 
         {data.map(wallet => (
           <div className="column is-4">

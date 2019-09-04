@@ -1,14 +1,17 @@
 import { Dayjs } from 'dayjs';
 
 export interface TransactionState {
-  data: []
+  data: Transaction[],
+  isLoading: boolean
 }
 
 export interface Transaction{
   id?: number,
+  amount: number,
+  finalAmout: number,
   description?:string,
-  wallet_source: number,
-  wallet_destination: number,
+  walletSource: number,
+  walletDestination: number,
   time: Dayjs,
 }
 

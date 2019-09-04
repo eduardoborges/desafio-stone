@@ -1,20 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { connect } from 'unistore/react';
-import { AuthActions, AuthState } from 'store/auth/types';
-import actions from 'store/auth/actions';
-import { Navbar } from 'components';
+import { AuthActions } from 'store/auth/types';
+import { PricesActions } from 'store/prices/types';
 import { AppState } from 'store';
+import authActions from 'store/auth/actions';
+import pricesActions from 'store/prices/actions';
+import { combineActions } from 'store/tools';
+import { Navbar } from 'components';
 
-type Props = AuthState & AuthActions & RouteComponentProps;
+type Props = AppState & AuthActions & PricesActions & RouteComponentProps;
 
 const Exchange: React.FC<Props> = (props) => {
   const {
-    children, isAuth, isLoading, handleCheckLogin,
-  } = props;
+ AUTH: { isAuth, isLoading }, PRICES: { BTC_BRT }, children, handleCheckLogin, handleGetPrices,
+} = props;
 
   useEffect(() => {
     handleCheckLogin();
+    handleGetPrices();
   }, []);
 
   return (
@@ -28,7 +33,7 @@ const Exchange: React.FC<Props> = (props) => {
       {/*  */}
       {isAuth && (
       <>
-        <Navbar />
+        <Navbar btcPrice={BTC_BRT} brtPrice={BTC_BRT} />
         <div className="section">
           <div className="container">
             {children}
@@ -40,6 +45,7 @@ const Exchange: React.FC<Props> = (props) => {
   );
 };
 
-const mapStateToProps = (state:AppState) => ({ ...state.AUTH });
+const actions = combineActions(pricesActions, authActions);
+const mapStateToProps = (state:AppState) => ({ ...state });
 
 export default connect(mapStateToProps, actions)(Exchange);
