@@ -20,15 +20,14 @@ const actions = (store:Store<AppState>) => ({
     const walletSource = wallets.find(w => w.id === source) || undefined;
     const walletDestin = wallets.find(w => w.id === dest) || undefined;
 
-
     if (
       walletSource !== undefined // checa se as carteiras existem
       && walletDestin !== undefined
       && amount >= 0
       && walletSource !== walletDestin
+      && walletSource.amount >= amount
+      && walletSource.amount !== undefined
     ) {
-      // checa se a carteira de origem tem saldo
-      if (walletSource.amount !== undefined && walletSource.amount >= amount) {
         // calcula o valor a ser somado na carteira origem fazendo a conversao
         const destAmount = walletSource.type === 'BTC' ? amount * prices.sell : Number((amount * (1 / prices.buy)).toFixed(8));
 
@@ -62,9 +61,15 @@ const actions = (store:Store<AppState>) => ({
             data: [...state.TRANSACTIONS.data, transaction],
           },
         };
+    }
+
+    if (amount <= 0) {
+      toast('Valor negativo', { type: toast.TYPE.ERROR });
+    }
+    if (walletSource) {
+      if (Number(walletSource.amount) < Number(amount)) {
+        toast('A carteira não tem saldo :/', { type: toast.TYPE.ERROR });
       }
-    } else {
-      toast('Carteira de origem ou destino nao existe', { type: toast.TYPE.ERROR });
     }
   },
   //
