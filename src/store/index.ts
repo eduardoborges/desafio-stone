@@ -40,6 +40,10 @@ const initialState: AppState = {
       buy: 0,
       sell: 0,
     },
+    BRT_BRL: {
+      buy: 0,
+      sell: 0,
+    },
   },
 };
 
