@@ -47,7 +47,7 @@ const initialState: AppState = {
   },
 };
 
-const store = process.env.NODE_ENV === 'production'
+const store = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test'
   ? createStore(initialState) : devtools(createStore(initialState));
 
 persistStore(store, adapter, config);
