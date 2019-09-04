@@ -29,3 +29,7 @@ export interface CurrencyResponse {
   timestamp: string;
   create_date: string;
 }
+
+export interface PricesActions {
+  handleGetPrices():void
+}
