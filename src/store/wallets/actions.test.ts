@@ -41,7 +41,6 @@ describe('Wallets Actions Tests', () => {
     // @ts-ignore
     await store.setState(removeWallet(store.getState(), wallet2));
 
-
     expect(await store.getState().WALLETS.data).toHaveLength(0);
   });
 });

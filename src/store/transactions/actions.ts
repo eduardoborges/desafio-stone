@@ -20,8 +20,13 @@ const actions = (store:Store<AppState>) => ({
     const walletSource = wallets.find(w => w.id === source) || undefined;
     const walletDestin = wallets.find(w => w.id === dest) || undefined;
 
-    // checa se as carteiras existem
-    if (walletSource !== undefined && walletDestin !== undefined) {
+
+    if (
+      walletSource !== undefined // checa se as carteiras existem
+      && walletDestin !== undefined
+      && amount >= 0
+      && walletSource !== walletDestin
+    ) {
       // checa se a carteira de origem tem saldo
       if (walletSource.amount !== undefined && walletSource.amount >= amount) {
         // calcula o valor a ser somado na carteira origem fazendo a conversao

@@ -5,6 +5,7 @@ import transactionsActions from './actions';
 import walletsActions from '../wallets/actions';
 
 describe('Transaction Actions Tests', () => {
+  const initialState = store.getState();
   const initialAmount = 10000;
 
   const wallet1 = {
@@ -16,6 +17,8 @@ describe('Transaction Actions Tests', () => {
   };
 
   it('Handle Get Prices', async () => {
+    store.setState(initialState);
+
     const { handleTransaction } = transactionsActions(store);
     const { createWallet } = walletsActions(store);
     // @ts-ignore
@@ -33,5 +36,47 @@ describe('Transaction Actions Tests', () => {
 
     expect(await store.getState().TRANSACTIONS.data).toHaveLength(1);
     expect(wallet1State.amount).toBe(initialAmount - 1);
+  });
+
+  it('Dont allow negative amount', async () => {
+    store.setState(initialState);
+
+    const { handleTransaction } = transactionsActions(store);
+    const { createWallet } = walletsActions(store);
+    // @ts-ignore
+    await store.setState(await createWallet(store.getState(), wallet1));
+    // @ts-ignore
+    await store.setState(await createWallet(store.getState(), wallet2));
+
+    // simulate transaction
+    // @ts-ignore
+    await store.setState(handleTransaction(store.getState(), 1, 2, -1));
+    // @ts-ignore
+    const wallet1State : Wallet = await store.getState()
+                                  .WALLETS.data.find(w => w.id === wallet1.id);
+
+    expect(await store.getState().TRANSACTIONS.data).toHaveLength(0);
+    expect(wallet1State.amount).toBe(initialAmount);
+  });
+
+  it('Dont allow transfer to same wallet', async () => {
+    store.setState(initialState);
+
+    const { handleTransaction } = transactionsActions(store);
+    const { createWallet } = walletsActions(store);
+    // @ts-ignore
+    await store.setState(await createWallet(store.getState(), wallet1));
+    // @ts-ignore
+    await store.setState(await createWallet(store.getState(), wallet2));
+
+    // simulate transaction
+    // @ts-ignore
+    await store.setState(handleTransaction(store.getState(), 1, 1, -1));
+    // @ts-ignore
+    const wallet1State : Wallet = await store.getState()
+                                  .WALLETS.data.find(w => w.id === wallet1.id);
+
+    expect(await store.getState().TRANSACTIONS.data).toHaveLength(0);
+    expect(wallet1State.amount).toBe(initialAmount);
   });
 });
