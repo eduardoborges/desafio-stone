@@ -57,4 +57,15 @@ describe('Wallets Actions Tests', () => {
 
     expect(store.getState().WALLETS.data).toHaveLength(0);
   });
+
+  it('Dont allow another wallet type', async () => {
+    store.setState(initialState);
+    const { createWallet } = actions(store);
+
+    const wallet = { name: 'Teste', type: 'USD' };
+    // @ts-ignore
+    store.setState(await createWallet(await store.getState(), wallet));
+
+    expect(store.getState().WALLETS.data).toHaveLength(0);
+  });
 });
