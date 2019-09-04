@@ -49,7 +49,7 @@ describe('Wallets Actions Tests', () => {
 
   it('Dont allow blank field', async () => {
     store.setState(initialState);
-    const { createWallet, removeWallet } = actions(store);
+    const { createWallet } = actions(store);
 
     const wallet = { amount: 10000 };
     // @ts-ignore
