@@ -25,7 +25,7 @@ const Navbar : React.FC<Props> = (props) => {
               <small>
                 <b>BTC</b>
                 {' '}
-                buy {btcPrice.buy} sell {btcPrice.sell}
+                buy {btcPrice.buy.toFixed(2)} sell {btcPrice.sell.toFixed(2)}
               </small>
 
             </div>
@@ -33,7 +33,7 @@ const Navbar : React.FC<Props> = (props) => {
               <small>
                 <b>BRT</b>
                 {' '}
-                buy {brtPrice.buy} sell {btcPrice.sell}
+                buy {brtPrice.buy.toFixed(2)} sell {brtPrice.sell.toFixed(2)}
               </small>
             </div>
             <Link to="/exchange/wallets" className="navbar-item">Wallets</Link>

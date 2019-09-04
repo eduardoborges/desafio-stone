@@ -14,8 +14,9 @@ type Props = AppState & AuthActions & PricesActions & RouteComponentProps;
 
 const Exchange: React.FC<Props> = (props) => {
   const {
- AUTH: { isAuth, isLoading }, PRICES: { BTC_BRT }, children, handleCheckLogin, handleGetPrices,
-} = props;
+    AUTH: { isAuth, isLoading }, PRICES: { BTC_BRT, BRT_BRL },
+    children, handleCheckLogin, handleGetPrices,
+  } = props;
 
   useEffect(() => {
     handleCheckLogin();
@@ -33,7 +34,7 @@ const Exchange: React.FC<Props> = (props) => {
       {/*  */}
       {isAuth && (
       <>
-        <Navbar btcPrice={BTC_BRT} brtPrice={BTC_BRT} />
+        <Navbar btcPrice={BTC_BRT} brtPrice={BRT_BRL} />
         <div className="section">
           <div className="container">
             {children}
