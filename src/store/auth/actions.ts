@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-import { Store, ActionCreator } from 'unistore';
+import { Store } from 'unistore';
 import { navigate } from '@reach/router';
 import { AppState } from '../index';
-import { AuthState } from './types';
 
 const actions = (store:Store<AppState>) => ({
 
@@ -11,7 +8,7 @@ const actions = (store:Store<AppState>) => ({
     store.setState({ AUTH: { ...state.AUTH, isLoading: true } });
     setTimeout(() => {
       store.setState({ AUTH: { ...state.AUTH, isAuth: true } });
-      navigate('/exchange');
+      navigate('/exchange/wallets');
     }, 2000); // :P
   },
 

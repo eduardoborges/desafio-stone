@@ -1,13 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+
 import store from 'store';
 import { Wallet } from 'store/wallets/types';
 import transactionsActions from './actions';
 import walletsActions from '../wallets/actions';
-
-configure({ adapter: new Adapter() });
-
 
 describe('Transaction Actions Tests', () => {
   const initialAmount = 10000;

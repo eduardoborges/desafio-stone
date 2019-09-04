@@ -1,11 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import store from 'store';
 import { sleep } from 'store/tools';
 import actions from './actions';
-
-configure({ adapter: new Adapter() });
 
 
 describe('Auth Actions Tests', () => {
