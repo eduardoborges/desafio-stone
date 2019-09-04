@@ -2,7 +2,7 @@ import store from 'store';
 import actions from './actions';
 
 describe('Prices Actions Tests', () => {
-  it('Handle Get Prices', async () => {
+  it('Handle get prices success', async () => {
     const state = store.getState();
     const { handleGetPrices } = actions(store);
 
