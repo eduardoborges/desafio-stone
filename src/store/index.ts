@@ -37,8 +37,8 @@ const initialState: AppState = {
   },
   PRICES: {
     BTC_BRT: {
-      buy: 10338.10,
-      sell: 9000,
+      buy: 0,
+      sell: 0,
     },
   },
 };
