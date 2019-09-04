@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { shallow, render, mount } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Wallet from './index';
 
