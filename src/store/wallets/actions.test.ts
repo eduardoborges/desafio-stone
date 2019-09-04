@@ -2,7 +2,6 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import store from 'store';
-import { Wallet } from 'store/wallets/types';
 import actions from './actions';
 
 configure({ adapter: new Adapter() });
@@ -19,29 +18,36 @@ describe('Wallets Actions Tests', () => {
     id: 2, name: 'Carteira 2', type: 'BTC', amount: initialAmount,
   };
 
-  it('Create New Wallet', async () => {
+
+  it('Create new Wallet', async () => {
     const { createWallet } = actions(store);
 
-    store.setState(createWallet(store.getState(), wallet1));
-    store.setState(createWallet(store.getState(), wallet2));
+    // @ts-ignore
+    await store.setState(await createWallet(store.getState(), wallet1));
+    // @ts-ignore
+    await store.setState(await createWallet(store.getState(), wallet2));
 
-    expect(store.getState().WALLETS.data).toHaveLength(2);
+    expect(await store.getState().WALLETS.data).toHaveLength(2);
   });
 
 
-  it('Remove Wallet', () => {
+  it('Remove Wallet', async () => {
     const { createWallet, removeWallet } = actions(store);
 
-    store.setState(createWallet(store.getState(), wallet1));
-    store.setState(createWallet(store.getState(), wallet2));
+    store.setState({ WALLETS: { ...store.getState().WALLETS, data: [] } });
+    // @ts-ignore
+    store.setState(await createWallet(await store.getState(), wallet1));
+    // @ts-ignore
+    store.setState(await createWallet(await store.getState(), wallet2));
 
     expect(store.getState().WALLETS.data).toHaveLength(2);
 
+    // @ts-ignore
+    await store.setState(removeWallet(store.getState(), wallet1));
+    // @ts-ignore
+    await store.setState(removeWallet(store.getState(), wallet2));
 
-    store.setState(removeWallet(store.getState(), wallet1));
-    store.setState(removeWallet(store.getState(), wallet2));
 
-
-    expect(store.getState().WALLETS.data).toHaveLength(0);
+    expect(await store.getState().WALLETS.data).toHaveLength(0);
   });
 });
