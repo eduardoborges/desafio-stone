@@ -46,7 +46,7 @@ const NewTransaction: React.FC<Props> = (props) => {
 
   function handleSubmit(form: any & Wallet) {
     handleTransaction(Number(id), form.destination, form.amount);
-    navigate('/exchance/wallets');
+    navigate('/exchange/wallets');
   }
 
   // helper function
