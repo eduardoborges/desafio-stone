@@ -1,7 +1,8 @@
 
 
 export interface PricesState {
-  BTC_BRT: Price
+  BTC_BRT: Price,
+  BRT_BRL: Price
 }
 
 export interface Price {

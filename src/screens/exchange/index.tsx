@@ -2,20 +2,23 @@
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { connect } from 'unistore/react';
-import { AuthActions, AuthState } from 'store/auth/types';
-import actions from 'store/auth/actions';
+import { AuthActions } from 'store/auth/types';
+import authActions from 'store/auth/actions';
+import pricesActions from 'store/prices/actions';
+import { combineActions } from 'store/tools';
 import { Navbar } from 'components';
 import { AppState } from 'store';
 
-type Props = AuthState & AuthActions & RouteComponentProps;
+type Props = AppState & AuthActions & PricesActions & RouteComponentProps;
 
 const Exchange: React.FC<Props> = (props) => {
   const {
-    children, isAuth, isLoading, handleCheckLogin,
-  } = props;
+ AUTH: { isAuth, isLoading }, PRICES: { BTC_BRT }, children, handleCheckLogin,
+} = props;
 
   useEffect(() => {
     handleCheckLogin();
+    handleGetPrices();
   }, []);
 
   return (
@@ -29,7 +32,7 @@ const Exchange: React.FC<Props> = (props) => {
       {/*  */}
       {isAuth && (
       <>
-        <Navbar />
+        <Navbar btcPrice={BTC_BRT} brtPrice={BTC_BRT} />
         <div className="section">
           <div className="container">
             {children}
@@ -41,6 +44,7 @@ const Exchange: React.FC<Props> = (props) => {
   );
 };
 
-const mapStateToProps = (state:AppState) => ({ ...state.AUTH });
+const actions = combineActions(pricesActions, authActions);
+const mapStateToProps = (state:AppState) => ({ ...state });
 
 export default connect(mapStateToProps, actions)(Exchange);
