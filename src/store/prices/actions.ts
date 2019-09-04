@@ -3,7 +3,7 @@ import { getPrices } from 'services/prices';
 import { AppState } from '../index';
 import { PriceResponse } from './types';
 
-const formatPrice = (price:string) => Number(price.replace('.', '').replace(',', '.')).toFixed(2);
+const formatPrice = (price:string) => Number(Number(price.replace('.', '').replace(',', '.')).toFixed(2));
 
 const actions = (store:Store<AppState>) => ({
 
