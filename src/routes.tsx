@@ -11,6 +11,7 @@ import NewTransaction from './screens/exchange/new-transaction';
 export default () => (
   <Router>
     <Redirect from="/" to="/login" />
+    <Redirect from="/exchange" to="/exchange/wallets" />
     <Login path="/login" />
     <Exchange path="/exchange">
       <Wallets path="wallets">

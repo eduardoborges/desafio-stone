@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import * as React from 'react';
 import { Price } from 'store/prices/types';
+import { Link } from '@reach/router';
 
 interface Props {
   btcPrice: Price,
@@ -35,7 +36,7 @@ const Navbar : React.FC<Props> = (props) => {
                 buy {brtPrice.buy} sell {btcPrice.sell}
               </small>
             </div>
-            <a aria-current="page" className="navbar-item is-active" href="/wallets">Wallets</a>
+            <Link to="/exchange/wallets" className="navbar-item">Wallets</Link>
           </div>
         </div>
       </div>
