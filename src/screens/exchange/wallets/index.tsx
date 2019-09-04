@@ -26,7 +26,7 @@ const Wallets: React.FC<Props> = (props) => {
       <div className="columns is-multiline">
 
         {data.map(wallet => (
-          <div className="column is-4">
+          <div className="column is-4" key={wallet.id}>
             <Wallet {...wallet} handleRemove={() => removeWallet(wallet)} handleExchange={() => navigate(`/exchange/wallets/${wallet.id}/transaction`)} />
           </div>
         ))}
