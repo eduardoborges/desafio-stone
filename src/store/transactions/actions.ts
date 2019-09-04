@@ -48,7 +48,7 @@ const actions = (store:Store<AppState>) => ({
         };
 
         // retorna pra store a transacao
-        toast('Trancação efetuada!', { type: toast.TYPE.SUCCESS });
+        toast('Transação efetuada :D', { type: toast.TYPE.SUCCESS });
 
         // retorna tudo para a store
         return {
