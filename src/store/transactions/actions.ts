@@ -2,10 +2,8 @@
 /* eslint-disable no-lonely-if */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { Store, ActionCreator } from 'unistore';
-import { navigate } from '@reach/router';
+import { Store } from 'unistore';
 import { toast } from 'react-toastify';
-import { Wallet } from 'store/wallets/types';
 import dayjs from 'dayjs';
 import { AppState } from '../index';
 import { Transaction } from './types';
@@ -27,13 +25,13 @@ const actions = (store:Store<AppState>) => ({
       // checa se a carteira de origem tem saldo
       if (walletSource.amount !== undefined && walletSource.amount >= amount) {
         // calcula o valor a ser somado na carteira origem fazendo a conversao
-        const destAmount = walletSource.type === 'BTC' ? amount * prices.sell : amount * (1 / prices.buy);
+        const destAmount = walletSource.type === 'BTC' ? amount * prices.sell : Number((amount * (1 / prices.buy)).toFixed(8));
 
         // faz a transacao, tirando e adicionando valores
         const walletsTransaction = wallets.map(w => (
-          w.id === source ? { ...w, amount: w.amount - amount } : w
+          w.id === source ? { ...w, amount: Number(w.amount) - Number(amount) } : w
         )).map(w => (
-          w.id === dest ? { ...w, amount: w.amount + destAmount } : w
+          w.id === dest ? { ...w, amount: Number(w.amount) + Number(destAmount) } : w
         ));
 
         const transaction : Transaction = {
@@ -45,8 +43,11 @@ const actions = (store:Store<AppState>) => ({
           finalAmout: destAmount,
         };
 
-        // salva na store
-        store.setState({
+        // retorna pra store a transacao
+        toast('Trancação efetuada!', { type: toast.TYPE.SUCCESS });
+
+        // retorna tudo para a store
+        return {
           WALLETS: {
             ...state.WALLETS,
             data: walletsTransaction,
@@ -55,11 +56,7 @@ const actions = (store:Store<AppState>) => ({
             ...state.TRANSACTIONS,
             data: [...state.TRANSACTIONS.data, transaction],
           },
-        });
-
-        // retorna pra store a transacao
-        toast('Trancação efetuada!', { type: toast.TYPE.SUCCESS });
-        return transaction;
+        };
       }
     } else {
       toast('Carteira de origem ou destino nao existe', { type: toast.TYPE.ERROR });
