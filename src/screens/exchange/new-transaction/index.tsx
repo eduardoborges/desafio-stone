@@ -9,7 +9,7 @@ import {
 import * as Yup from 'yup';
 import { connect } from 'unistore/react';
 import { Wallet, WalletActions, WalletState } from 'store/wallets/types';
-import { Transaction, TransactionActions } from 'store/transactions/types';
+import { TransactionActions } from 'store/transactions/types';
 import transactionActions from 'store/transactions/actions';
 import { AppState } from 'store';
 
@@ -17,24 +17,21 @@ interface OwnProps {
   id: string,
 }
 
-type Props = RouteComponentProps & WalletActions & TransactionActions & WalletState & OwnProps;
+type Props = RouteComponentProps & WalletActions & TransactionActions & AppState & OwnProps;
 
 const schema = Yup.object().shape({
   destination: Yup.number().required('Destino obrigatório').typeError('Opa...'),
   amount: Yup.number().min(0.0000000001, 'Precisa ser maior que 0 uai...').required('Você está esquecendo algo...'),
 });
 
-const Wallets: React.FC<Props> = (props) => {
+const NewTransaction: React.FC<Props> = (props) => {
   //
-  const { data, handleTransaction, id } = props;
+  const {
+    WALLETS: { data }, PRICES: { BTC_BRT, BRT_BRL }, id, handleTransaction,
+  } = props;
 
   const [amount, setAmount] = useState<number>(0);
   const [wallet, setWallet] = useState<Wallet>();
-
-  const BTC_BRT = {
-    buy: 10338.10,
-    sell: 9000,
-  };
 
   const BRT_BTC = {
     buy: 1 / BTC_BRT.buy,
@@ -84,7 +81,10 @@ const Wallets: React.FC<Props> = (props) => {
                   <div className="select is-fullwidth is-rounded">
                     <Select
                       name="destination"
-                      options={converToOptions(data.filter(w => Number(w.id) !== Number(id)).filter(w => w.type !== wallet.type))}
+                      options={converToOptions(data
+                        .filter(w => Number(w.id) !== Number(id))
+                        .filter(w => w.type !== wallet.type))
+                      }
                     />
                   </div>
                 </div>
@@ -121,12 +121,12 @@ const Wallets: React.FC<Props> = (props) => {
             </footer>
           </Form>
         </div>
-) : null }
+      ) : null }
 
     </div>
     );
 };
 
-const mapStateToProps = (state:AppState) => ({ ...state.WALLETS });
+const mapStateToProps = (state:AppState) => ({ ...state });
 
-export default connect(mapStateToProps, transactionActions)(Wallets);
+export default connect(mapStateToProps, transactionActions)(NewTransaction);
