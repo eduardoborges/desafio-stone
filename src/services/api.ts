@@ -6,17 +6,9 @@ const api = axios.create({
 });
 
 // request interceptor
-api.interceptors.request.use((req) => {
-  // muda suas paradas
-  console.log(req);
-  return req;
-});
+api.interceptors.request.use(req => req);
 
 // Response interceptor
-api.interceptors.response.use((resp) => {
-  // muda suas paradas
-  console.log(resp);
-  return resp;
-});
+api.interceptors.response.use(resp => resp);
 
 export default api;
